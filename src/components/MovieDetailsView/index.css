@@ -1,0 +1,63 @@
+.movie-info-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.movie-ul {
+  list-style: none;
+  padding: 0;
+}
+
+.inner-info {
+  display: flex;
+  color: #fff;
+  font-family: 'roboto';
+}
+
+.in-time {
+  border: 1px solid #fff;
+  width: 40px;
+  text-align: center;
+  border-radius: 2px;
+}
+
+.time {
+  margin-right: 10px;
+}
+
+.movie-info-heading {
+  color: #94a3b8;
+  font-family: 'roboto';
+}
+
+.movie-info-para {
+  font-family: 'roboto';
+  color: #fff;
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+.similar-container {
+  padding: 0px 50px 0px 40px;
+}
+
+.similar-heading {
+  color: #fff;
+  font-family: 'roboto';
+}
+
+.similar-ul {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  align-items: center;
+}
+
+.similar-img {
+  height: 150px;
+  width: 255px;
+  border-radius: 10px;
+  margin-right: 20px;
+  margin-bottom: 10px;
+}

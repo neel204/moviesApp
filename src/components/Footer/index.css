@@ -1,0 +1,40 @@
+.footer-container {
+  background-color: #181818;
+  height: 170px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-icon-con {
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+}
+
+@media screen and (min-width: 577px) {
+  .footer-icon-con {
+    width: 40vh;
+  }
+}
+
+.social-icon {
+  font-size: 40px;
+  color: #ffffff;
+}
+
+.footer-heading {
+  font-family: 'roboto';
+  font-size: 30px;
+  text-align: center;
+  color: #ffffff;
+  font-weight: 400;
+}
+
+.footer-btn {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
+}

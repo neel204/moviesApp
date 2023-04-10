@@ -1,0 +1,117 @@
+.acc-heading {
+  font-family: 'roboto';
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.acc-ship {
+  display: flex;
+}
+
+.acc-user {
+  color: #94a3b8;
+  font-family: 'roboto';
+  font-weight: 400;
+  margin-right: 20px;
+}
+
+.acc-name {
+  font-family: 'roboto';
+  font-size: 20px;
+}
+
+.account-info-con {
+  background-color: #ffffff;
+  display: flex;
+  font-stretch: expanded;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20px;
+}
+
+.info-con-acc {
+  width: 70%;
+  height: 450px;
+}
+
+hr {
+  height: 2px;
+  background-color: #cbd5e1;
+}
+
+.acc-hd {
+  border: 1px solid #000000;
+  font-family: 'roboto';
+  border-radius: 3px;
+  margin: 20px 0px 0px 20px;
+  height: 25px;
+  width: 75px;
+  text-align: center;
+}
+
+.btn-con {
+  text-align: center;
+}
+
+.logout-btn {
+  margin: 20px 0px;
+  height: 38px;
+  background-color: rgb(247, 23, 23);
+  color: #fff;
+  font-family: 'roboto';
+  font-size: 18px;
+  border: none;
+  outline: none;
+  border-radius: 4px;
+  width: 100px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 576px) {
+  .info-con-acc {
+    height: auto;
+  }
+
+  .acc-heading {
+    font-size: 24px;
+  }
+
+  .acc-hd {
+    margin: 10px 0px 0px 10px;
+    height: 20px;
+    width: 60px;
+    font-size: 12px;
+  }
+
+  .logout-btn {
+    margin: 10px 0px;
+    height: 32px;
+    font-size: 16px;
+    width: 80px;
+  }
+}
+
+@media screen and (min-width: 577px) {
+  .info-con-acc {
+    height: 450px;
+  }
+
+  .acc-heading {
+    font-size: 32px;
+  }
+
+  .acc-hd {
+    margin: 20px 0px 0px 20px;
+    height: 25px;
+    width: 75px;
+    font-size: initial;
+  }
+
+  .logout-btn {
+    margin: 20px 0px;
+    height: 38px;
+    font-size: 18px;
+    width: 100px;
+  }
+}
