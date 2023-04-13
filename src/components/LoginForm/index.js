@@ -23,6 +23,7 @@ class LoginForm extends Component {
     })
     history.replace('/')
     const {username, password} = this.state
+    // Setting username and password from localStorage
     localStorage.setItem('username', username)
     localStorage.setItem('password', password)
   }

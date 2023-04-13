@@ -5,6 +5,7 @@ import Footer from '../Footer'
 import './index.css'
 
 const Account = props => {
+  //  getting username and password from localStorage
   const username = localStorage.getItem('username')
   const password = localStorage.getItem('password')
 

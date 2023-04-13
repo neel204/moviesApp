@@ -38,8 +38,8 @@ class Header extends Component {
                 <Link to="/search">
                   <button
                     type="button"
-                    testid="searchButton"
                     className="search-btn"
+                    testid="searchButton"
                   >
                     <HiOutlineSearch className="link sea" />
                   </button>
@@ -69,7 +69,6 @@ class Header extends Component {
               <Link to="/search">
                 <button
                   type="button"
-                  testid="searchButton"
                   className="search-btn"
                 >
                   <HiOutlineSearch className="link sea" />
