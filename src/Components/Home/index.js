@@ -1,10 +1,13 @@
 import {Component} from 'react'
-import Loader from 'react-loader-spinner'
 import Cookies from 'js-cookie'
-import Header from '../Header'
-import TrendingNow from '../TrendingNow'
+import Loading from '../Loading'
+import Failure from '../Failure'
+import Trending from '../Trending'
 import Original from '../Original'
+
+import Header from '../Header'
 import Footer from '../Footer'
+
 import './index.css'
 
 const apiStatusConstants = {
@@ -65,50 +68,9 @@ class Home extends Component {
     this.getPosterDetails()
   }
 
-  onLoading = () => (
-    <>
-      <Header className="header-loading-failure" />
-      <div className="loading-failure-con">
-        <div className="failure-mgs-con" testid="loader">
-          <Loader
-            type="TailSpin"
-            height="80"
-            width="80"
-            color="#D81F26"
-            ariaLabel="tail-spin-loading"
-            radius="1"
-            wrapperStyle={{}}
-            wrapperClass=""
-          />
-        </div>
-      </div>
-    </>
-  )
+  onLoading = () => <Loading />
 
-  onFailure = () => (
-    <>
-      <Header className="header-loading-failure" />
-      <div className="header-loading-failure-con">
-        <div className="failure-mgs-con">
-          <img
-            className="img-wrong"
-            src="https://res.cloudinary.com/dqhwxowdo/image/upload/v1680020298/MOVIES%20APP%20NETFLIX-AMAZON%20PRIME%20CLONE/Icon_vbyyrg.png"
-            alt="failure view"
-          />
-          <p className="went-wrong-mgs">
-            Something went wrong. Please try again
-          </p>
-          <button
-            className="try-again-btn"
-            type="button"
-            onClick={this.onTryAgain}
-          >
-            Try Again
-          </button>
-        </div>
-      </div>
-    </>
-  )
+  onFailure = () => <Failure onTryAgain={this.onTryAgain} />
 
   onSuccess = () => {
     const {bgPosterAndDetails} = this.state
@@ -160,14 +122,16 @@ class Home extends Component {
 
   render() {
     return (
-      <div className="home">
-        {this.renderPosterDetails()}
-        <h1 className="content">Trending Now</h1>
-        <TrendingNow />
-        <h1 className="content">Original</h1>
-        <Original />
-        <Footer />
-      </div>
+      <>
+        <div className="home">
+          {this.renderPosterDetails()}
+          <h1 className="content">Trending Now</h1>
+          <Trending />
+          <h1 className="content">Original</h1>
+          <Original />
+          <Footer />
+        </div>
+      </>
     )
   }
 }

@@ -1,7 +1,7 @@
 import {Component} from 'react'
 import {Link} from 'react-router-dom'
 import Cookies from 'js-cookie'
-import Loader from 'react-loader-spinner'
+import Loading from '../Loading'
 import Header from '../Header'
 import Footer from '../Footer'
 
@@ -58,20 +58,7 @@ class Popular extends Component {
     this.getPopularMovie()
   }
 
-  onPopularLoading = () => (
-    <div className="trend-failure-mgs-con" testid="loader">
-      <Loader
-        type="TailSpin"
-        height="80"
-        width="80"
-        color="#D81F26"
-        ariaLabel="tail-spin-loading"
-        radius="1"
-        wrapperStyle={{}}
-        wrapperClass=""
-      />
-    </div>
-  )
+  onPopularLoading = () => <Loading />
 
   onPopularSuccess = () => {
     const {popularMovies} = this.state

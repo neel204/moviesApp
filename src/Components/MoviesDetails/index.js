@@ -1,9 +1,10 @@
 import {Component} from 'react'
 import Cookies from 'js-cookie'
-import Loader from 'react-loader-spinner'
 import {Link} from 'react-router-dom'
 import Header from '../Header'
 import Footer from '../Footer'
+import Loading from '../Loading'
+import Failure from '../Failure'
 import './index.css'
 
 const apiStatusConstants = {
@@ -93,50 +94,9 @@ class MovieDetailsView extends Component {
     this.getMoviePosterDetails()
   }
 
-  onMoviePosterDetailsLoading = () => (
-    <>
-      <Header className="header-loading-failure" />
-      <div className="loading-failure-con">
-        <div className="failure-mgs-con" testid="loader">
-          <Loader
-            type="TailSpin"
-            height="80"
-            width="80"
-            color="#D81F26"
-            ariaLabel="tail-spin-loading"
-            radius="1"
-            wrapperStyle={{}}
-            wrapperClass=""
-          />
-        </div>
-      </div>
-    </>
-  )
+  onMoviePosterDetailsLoading = () => <Loading />
 
-  onMoviePosterDetailsFailure = () => (
-    <>
-      <Header className="header-loading-failure" />
-      <div className="header-loading-failure-con">
-        <div className="failure-mgs-con">
-          <img
-            className="img-wrong"
-            src="https://res.cloudinary.com/dqhwxowdo/image/upload/v1680020298/MOVIES%20APP%20NETFLIX-AMAZON%20PRIME%20CLONE/Icon_vbyyrg.png"
-            alt="failure view"
-          />
-          <p className="went-wrong-mgs">
-            Something went wrong. Please try again
-          </p>
-          <button
-            className="try-again-btn"
-            type="button"
-            onClick={this.onTryAgain}
-          >
-            Try Again
-          </button>
-        </div>
-      </div>
-    </>
-  )
+  onMoviePosterDetailsFailure = () => <Failure onTryAgain={this.onTryAgain} />
 
   onMoviePosterDetailsSuccess = () => {
     const {movieDetails, genres, spokenLanguages, similarMovies} = this.state

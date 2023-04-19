@@ -2,7 +2,7 @@ import {Component} from 'react'
 import Cookies from 'js-cookie'
 import './index.css'
 
-class LoginForm extends Component {
+class Login extends Component {
   state = {username: '', password: '', isError: false, errorMsg: ''}
 
   onUserName = event => {
@@ -104,4 +104,4 @@ class LoginForm extends Component {
   }
 }
 
-export default LoginForm
+export default Login

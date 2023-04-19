@@ -1,14 +1,14 @@
 import {Switch, Route, Redirect} from 'react-router-dom'
 
-import Home from './components/Home'
-import NotFound from './components/NotFound'
-import LoginFrom from './components/LoginForm'
-import Account from './components/Account'
-import Search from './components/Search'
-import Popular from './components/Popular'
-import MovieDetailsView from './components/MovieDetailsView'
+import Home from './Components/Home'
+import NotFound from './Components/NotFound'
+import LoginFrom from './Components/Login'
+import Account from './Components/Account'
+import Search from './Components/Search'
+import Popular from './Components/Popular'
+import MoviesDetails from './Components/MoviesDetails'
 
-import ProtectedRoute from './components/ProtectedRoute'
+import ProtectedRoute from './Components/ProtectedRoute'
 
 import './App.css'
 
@@ -19,7 +19,7 @@ const App = () => (
     <ProtectedRoute exact path="/popular" component={Popular} />
     <ProtectedRoute exact path="/search" component={Search} />
     <ProtectedRoute exact path="/account" component={Account} />
-    <ProtectedRoute exact path="/movies/:id" component={MovieDetailsView} />
+    <ProtectedRoute exact path="/movies/:id" component={MoviesDetails} />
     <Route path="/not-found" component={NotFound} />
     <Redirect to="not-found" />
   </Switch>

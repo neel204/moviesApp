@@ -67,10 +67,7 @@ class Header extends Component {
             </Link>
             <div className="sm-menu-search">
               <Link to="/search">
-                <button
-                  type="button"
-                  className="search-btn"
-                >
+                <button type="button" className="search-btn">
                   <HiOutlineSearch className="link sea" />
                 </button>
               </Link>
