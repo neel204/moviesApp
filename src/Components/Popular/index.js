@@ -67,16 +67,16 @@ class Popular extends Component {
       <div className="popular-movie-info">
         <ul className="popular-list">
           {popularMovies.map(eachPop => (
-            <div className="info-con">
+            <li className="info-con" key={eachPop.id}>
               <Link to={`/movies/${eachPop.id}`}>
                 <img
                   src={eachPop.posterUrl}
-                  alt="poster"
+                  alt={eachPop.title}
                   className="poster-img"
                 />
               </Link>
               <p className="poster-name">{eachPop.title}</p>
-            </div>
+            </li>
           ))}
         </ul>
       </div>

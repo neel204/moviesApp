@@ -49,7 +49,7 @@ class ReactSlick extends Component {
             <Link to={`/movies/${eachMovie.id}`} key={eachMovie.id}>
               <li className="list-item" key={eachMovie.id}>
                 <img
-                  src={eachMovie.posterPath}
+                  src={eachMovie.posterUrl}
                   alt={eachMovie.title}
                   className="movie-img"
                 />

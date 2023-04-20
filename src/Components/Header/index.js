@@ -1,113 +1,133 @@
 import {Component} from 'react'
-import {Link, withRouter} from 'react-router-dom'
+import {Link} from 'react-router-dom'
+
 import {HiOutlineSearch} from 'react-icons/hi'
 import {MdMenuOpen} from 'react-icons/md'
-import {ImCross} from 'react-icons/im'
+import {AiFillCloseCircle} from 'react-icons/ai'
+
 import './index.css'
 
 class Header extends Component {
-  state = {openClose: false}
+  state = {fullMenu: false, searchValue: ''}
 
-  onOpenClose = () => {
-    this.setState(prevState => ({openClose: !prevState.openClose}))
+  menuShow = () => {
+    this.setState({fullMenu: true})
+  }
+
+  menuHide = () => {
+    this.setState({fullMenu: false})
+  }
+
+  getSearchInput = event => {
+    this.setState({searchValue: event.target.value})
+  }
+
+  onSearch = () => {
+    const {getSearchMoviesData} = this.props
+    const {searchValue} = this.state
+    if (searchValue !== '') {
+      getSearchMoviesData(searchValue)
+    }
   }
 
   render() {
-    const {openClose} = this.state
+    const {fullMenu, searchValue} = this.state
+    const {searchRoute, isHome, isPopular, isAccount} = this.props
+    const searchContainer = searchRoute
+      ? 'search-input-route-container search-input-container'
+      : 'search-input-container'
+    const searchBtn = searchRoute
+      ? 'search-route-btn search-button'
+      : 'search-button'
+    const searchIcon = searchRoute ? 'icons search-route-icon' : 'icons'
+
+    const homeRoute = isHome ? 'menu-items highlight' : 'menu-items'
+    const popularRoute = isPopular ? 'menu-items highlight' : 'menu-items'
+    const accountRoute = isAccount ? 'menu-items highlight' : 'menu-items'
+
     return (
-      <>
-        <nav className="movie-header bg-screen">
-          <div className="header-con">
-            <Link to="/">
-              <img
-                src="https://res.cloudinary.com/dqhwxowdo/image/upload/v1680010401/MOVIES%20APP%20NETFLIX-AMAZON%20PRIME%20CLONE/Group_7399_dtbqvh.png"
-                alt="website logo"
-                className="movies-logo"
-              />
+      <nav className="nav-bar">
+        <div className="header">
+          <Link to="/" className="img-link">
+            <img
+              className="header-web-site"
+              alt="website logo"
+              src="https://res.cloudinary.com/dsiyffj0o/image/upload/v1670493842/Group_7399_f2jz6k.png"
+            />
+          </Link>
+          <ul className="show-menu show1">
+            <Link to="/" className={homeRoute}>
+              <li>Home</li>
             </Link>
-            <div className="header-con2">
-              <ul className="header-link" testid="header-link">
-                <Link to="/" className="link ">
-                  <li>Home</li>
-                </Link>
-                <Link to="/popular" className="link">
-                  <li>Popular</li>
-                </Link>
-              </ul>
-              <div className="header-con">
-                <Link to="/search">
-                  <button
-                    type="button"
-                    className="search-btn"
-                    testid="searchButton"
-                  >
-                    <HiOutlineSearch className="link sea" />
-                  </button>
-                </Link>
-                <Link to="/account" className="link">
-                  <img
-                    src="https://res.cloudinary.com/dqhwxowdo/image/upload/v1680533786/MOVIES%20APP%20NETFLIX-AMAZON%20PRIME%20CLONE/Avatar_2_ydqz0s.png"
-                    alt="profile"
-                    className="account-img"
-                    data-testid="profile-image"
-                  />
-                </Link>
-              </div>
-            </div>
-          </div>
-        </nav>
-        <nav className="movie-header sm-screen">
-          <div className="header-con">
-            <Link to="/">
-              <img
-                src="https://res.cloudinary.com/dqhwxowdo/image/upload/v1680010401/MOVIES%20APP%20NETFLIX-AMAZON%20PRIME%20CLONE/Group_7399_dtbqvh.png"
-                alt="website logo"
-                className="movies-logo"
-              />
+            <Link to="/popular" className={popularRoute}>
+              <li>Popular</li>
             </Link>
-            <div className="sm-menu-search">
+          </ul>
+          <div className="icons-container">
+            <div className={searchContainer}>
+              {searchRoute && (
+                <input
+                  value={searchValue}
+                  onChange={this.getSearchInput}
+                  placeholder="Search"
+                  type="search"
+                  className="search-input"
+                />
+              )}
               <Link to="/search">
-                <button type="button" className="search-btn">
-                  <HiOutlineSearch className="link sea" />
+                <button
+                  onClick={this.onSearch}
+                  type="button"
+                  testid="searchButton"
+                  className={searchBtn}
+                >
+                  <HiOutlineSearch className={searchIcon} />
                 </button>
               </Link>
-              <button
-                type="button"
-                className="menu-btn"
-                onClick={this.onOpenClose}
-              >
-                <MdMenuOpen />
-              </button>
             </div>
+            <Link to="/account">
+              <img
+                className="avatar show1"
+                alt="profile"
+                src="https://res.cloudinary.com/dsiyffj0o/image/upload/v1671165868/Avatar_gbes4m.png"
+              />
+            </Link>
+            <button
+              onClick={this.menuShow}
+              type="button"
+              className="show close-btn"
+            >
+              <MdMenuOpen className="hamburger icons" />
+            </button>
           </div>
-          {openClose && (
-            <div className="menu-screen " testid="header-link">
-              <ul className="header-link-sm">
-                <Link to="/" className="link">
-                  <li>Home</li>
-                </Link>
-                <Link to="/popular" className="link">
-                  <li>Popular</li>
-                </Link>
-                <Link to="/account" className="link">
-                  <li>Account</li>
-                </Link>
-                <li>
-                  <button
-                    type="button"
-                    className="close-menu"
-                    onClick={this.onOpenClose}
-                  >
-                    <ImCross />
-                  </button>
-                </li>
-              </ul>
-            </div>
+        </div>
+
+        <nav className="show">
+          {fullMenu && (
+            <ul className="show-menu">
+              <Link to="/" className={homeRoute}>
+                <li>Home</li>
+              </Link>
+              <Link to="/popular" className={popularRoute}>
+                <li>Popular</li>
+              </Link>
+              <Link to="/account" className={accountRoute}>
+                <li>Account</li>
+              </Link>
+              <li>
+                <button
+                  onClick={this.menuHide}
+                  className="close-btn"
+                  type="button"
+                >
+                  <AiFillCloseCircle className="close icons" />
+                </button>
+              </li>
+            </ul>
           )}
         </nav>
-      </>
+      </nav>
     )
   }
 }
-
-export default withRouter(Header)
+export default Header
